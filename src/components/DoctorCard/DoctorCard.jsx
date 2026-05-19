@@ -72,9 +72,23 @@ const DoctorCard = ({
       profilePic.startsWith('data:'));
 
   const handleCancel = (appointmentId) => {
+    const cancelledAppointment = appointments.find(
+      (appointment) => appointment.id === appointmentId
+    );
     setAppointments((prev) =>
       prev.filter((appointment) => appointment.id !== appointmentId)
     );
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('appointment:cancelled', {
+          detail: {
+            appointmentId,
+            doctorName: name,
+            appointment: cancelledAppointment || null,
+          },
+        })
+      );
+    }
   };
 
   return (
@@ -182,10 +196,22 @@ const DoctorCard = ({
                   doctorName={name}
                   doctorSpeciality={speciality}
                   onSubmit={(data) => {
+                    const newAppointment = { id: uuidv4(), ...data };
                     setAppointments((prev) => [
                       ...prev,
-                      { id: uuidv4(), ...data },
+                      newAppointment,
                     ]);
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(
+                        new CustomEvent('appointment:booked', {
+                          detail: {
+                            doctorName: name,
+                            speciality,
+                            appointment: newAppointment,
+                          },
+                        })
+                      );
+                    }
                     close();
                   }}
                   onCancel={close}

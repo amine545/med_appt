@@ -12,7 +12,10 @@ const ALL_SPECIALITIES = [
   'Ayurveda',
 ];
 
-const FindDoctorSearch = ({ showMarketing = true }) => {
+const FindDoctorSearch = ({
+  showMarketing = true,
+  resultsPath = '/instant-consultation',
+}) => {
   const [doctorResultHidden, setDoctorResultHidden] = useState(true);
   const [searchDoctor, setSearchDoctor] = useState('');
   const navigate = useNavigate();
@@ -27,7 +30,7 @@ const FindDoctorSearch = ({ showMarketing = true }) => {
     setSearchDoctor(speciality);
     setDoctorResultHidden(true);
     navigate(
-      `/instant-consultation?speciality=${encodeURIComponent(speciality)}`
+      `${resultsPath}?speciality=${encodeURIComponent(speciality)}`
     );
   };
 

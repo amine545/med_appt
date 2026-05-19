@@ -5,7 +5,9 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import InstantConsultation from './components/InstantConsultationBooking/InstantConsultation.jsx'
+import BookingConsultation from './components/BookingConsultation/BookingConsultation.jsx'
 import FindDoctorSearch from './components/FindDoctorSearch/FindDoctorSearch.jsx'
+import Notification from './components/Notification/Notification.jsx'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -126,10 +128,13 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/instant-consultation" element={<InstantConsultation />} />
-      </Routes>
+      <Notification>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/instant-consultation" element={<InstantConsultation />} />
+          <Route path="/booking-consultation" element={<BookingConsultation />} />
+        </Routes>
+      </Notification>
     </BrowserRouter>
   )
 }
