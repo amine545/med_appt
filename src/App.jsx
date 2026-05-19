@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import InstantConsultation from './components/InstantConsultationBooking/InstantConsultation.jsx'
 
-function App() {
+function Home() {
   const [count, setCount] = useState(0)
 
   return (
@@ -116,6 +118,17 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/instant-consultation" element={<InstantConsultation />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
