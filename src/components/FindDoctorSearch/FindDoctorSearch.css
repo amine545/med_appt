@@ -64,11 +64,7 @@
 
 .search-location-result-item:hover {
     background-color: #f0f0f5;
-
 }
-
-
-
 
 .doctor-search-box {
     display: flex;
@@ -110,8 +106,8 @@
     height: 40px;
     border: 1px solid rgb(59, 58, 58);
     z-index: -99;
-
 }
+
 .search-doctor-input-results {
     position: absolute;
     top: 55%;
@@ -159,17 +155,17 @@
     text-transform: uppercase;
     justify-self: flex-end;
 }
+
 .home-search-container {
-    /* width: 712px; */
     padding: 20px 0;
     display: flex;
     align-items: center;
 }
 
 .finddoctor{
-    /* height: 0 auto; */
     overflow: hidden;
-} 
+}
+
 .finddoctor .mainimg{
     width: 312px;
     height: 312px;

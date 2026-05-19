@@ -5,12 +5,14 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import InstantConsultation from './components/InstantConsultationBooking/InstantConsultation.jsx'
+import FindDoctorSearch from './components/FindDoctorSearch/FindDoctorSearch.jsx'
 
 function Home() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <FindDoctorSearch showMarketing={false} />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
