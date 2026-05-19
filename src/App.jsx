@@ -8,6 +8,7 @@ import InstantConsultation from './components/InstantConsultationBooking/Instant
 import BookingConsultation from './components/BookingConsultation/BookingConsultation.jsx'
 import FindDoctorSearch from './components/FindDoctorSearch/FindDoctorSearch.jsx'
 import Notification from './components/Notification/Notification.jsx'
+import ReviewForm from './components/ReviewForm/ReviewForm.jsx'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -133,6 +134,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/instant-consultation" element={<InstantConsultation />} />
           <Route path="/booking-consultation" element={<BookingConsultation />} />
+          <Route path="/reviews" element={<ReviewForm />} />
         </Routes>
       </Notification>
     </BrowserRouter>
