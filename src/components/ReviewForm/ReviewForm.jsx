@@ -6,7 +6,7 @@ const INITIAL_ROWS = [
   { id: 2, doctorName: 'Dr. Jane Smith', speciality: 'Dermatology', review: null },
 ];
 
-const ReviewForm = () => {
+const ReviewForm = ({ getAppointmentForRow }) => {
   const [rows, setRows] = useState(INITIAL_ROWS);
   const [activeRowId, setActiveRowId] = useState(null);
   const [showWarning, setShowWarning] = useState(false);
@@ -17,6 +17,10 @@ const ReviewForm = () => {
   });
 
   const activeDoctor = rows.find((row) => row.id === activeRowId);
+  const resolveAppointment =
+    typeof getAppointmentForRow === 'function' ? getAppointmentForRow : () => null;
+  const appointmentContext =
+    activeDoctor != null ? resolveAppointment(activeDoctor) : null;
 
   const handleReviewClick = (id) => {
     setActiveRowId(id);
@@ -125,6 +129,41 @@ const ReviewForm = () => {
           <p className="review-form-doctor">
             {activeDoctor.doctorName} - {activeDoctor.speciality}
           </p>
+          {appointmentContext ? (
+            <div className="review-form-context" role="region" aria-label="Appointment context">
+              <h3 className="review-form-context__title">Your appointment</h3>
+              {(appointmentContext.visitCount ?? 0) > 1 ? (
+                <p className="review-form-context__meta">
+                  Showing your most recent visit ({appointmentContext.visitCount} appointments on file
+                  with this doctor).
+                </p>
+              ) : null}
+              <dl className="review-form-context__dl">
+                <div>
+                  <dt>Patient</dt>
+                  <dd>{appointmentContext.name}</dd>
+                </div>
+                {appointmentContext.appointmentDate ? (
+                  <div>
+                    <dt>Date</dt>
+                    <dd>{appointmentContext.appointmentDate}</dd>
+                  </div>
+                ) : null}
+                {appointmentContext.timeSlot ? (
+                  <div>
+                    <dt>Time</dt>
+                    <dd>{appointmentContext.timeSlot}</dd>
+                  </div>
+                ) : null}
+                {appointmentContext.phoneNumber ? (
+                  <div>
+                    <dt>Phone</dt>
+                    <dd>{appointmentContext.phoneNumber}</dd>
+                  </div>
+                ) : null}
+              </dl>
+            </div>
+          ) : null}
           {showWarning ? (
             <p className="review-warning">Please fill all fields and choose rating.</p>
           ) : null}

@@ -8,7 +8,10 @@ import InstantConsultation from './components/InstantConsultationBooking/Instant
 import BookingConsultation from './components/BookingConsultation/BookingConsultation.jsx'
 import FindDoctorSearch from './components/FindDoctorSearch/FindDoctorSearch.jsx'
 import Notification from './components/Notification/Notification.jsx'
-import ReviewForm from './components/ReviewForm/ReviewForm.jsx'
+import ReviewFormApp from './components/ReviewForm/ReviewFormApp.jsx'
+import Navbar from './components/Navbar/Navbar.jsx'
+import ProfilePage from './components/ProfileCard/ProfilePage.jsx'
+import Login from './components/Login/Login.jsx'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -130,12 +133,17 @@ function App() {
   return (
     <BrowserRouter>
       <Notification>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
-          <Route path="/booking-consultation" element={<BookingConsultation />} />
-          <Route path="/reviews" element={<ReviewForm />} />
-        </Routes>
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/instant-consultation" element={<InstantConsultation />} />
+            <Route path="/booking-consultation" element={<BookingConsultation />} />
+            <Route path="/reviews" element={<ReviewFormApp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
+        </>
       </Notification>
     </BrowserRouter>
   )

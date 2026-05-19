@@ -183,6 +183,56 @@
   font-size: 0.9rem;
 }
 
+.review-form-context {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  border: 1px solid var(--border);
+}
+
+.review-form-context__title {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-h);
+}
+
+.review-form-context__meta {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--reviews-muted);
+}
+
+.review-form-context__dl {
+  margin: 0;
+  display: grid;
+  gap: 8px 12px;
+}
+
+.review-form-context__dl > div {
+  display: grid;
+  grid-template-columns: minmax(4.5rem, auto) 1fr;
+  gap: 8px 12px;
+  align-items: baseline;
+  font-size: 0.9rem;
+}
+
+.review-form-context__dl dt {
+  margin: 0;
+  font-weight: 600;
+  color: var(--reviews-muted);
+}
+
+.review-form-context__dl dd {
+  margin: 0;
+  color: var(--text-h);
+  overflow-wrap: anywhere;
+}
+
 .review-warning {
   margin: 0;
   padding: 10px 12px;

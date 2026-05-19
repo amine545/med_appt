@@ -1,0 +1,14 @@
+.profile-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 3vw, 24px);
+  font-family: var(--sans);
+}
+
+.profile-page__title {
+  margin: 0 0 24px;
+  font-family: var(--heading);
+  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--text-h);
+}
