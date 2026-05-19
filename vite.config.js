@@ -7,6 +7,19 @@ export default defineConfig({
   esbuild: {
     jsx: 'automatic',
   },
+  build: {
+    minify: 'esbuild',
+    cssCodeSplit: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  css: {
+    postcss: {},
+  },
   test: {
     globals: false,
     environment: 'jsdom',

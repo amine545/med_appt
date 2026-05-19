@@ -12,6 +12,7 @@ import ReviewFormApp from './components/ReviewForm/ReviewFormApp.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import ProfilePage from './components/ProfileCard/ProfilePage.jsx'
 import Login from './components/Login/Login.jsx'
+import Sign_Up from './components/Sign_Up/Sign_Up.jsx'
 import ReportsPage from './components/Reports/ReportsPage.jsx'
 
 function Home() {
@@ -143,6 +144,7 @@ function App() {
             <Route path="/reviews" element={<ReviewFormApp />} />
             <Route path="/reports" element={<ReportsPage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Sign_Up />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </>

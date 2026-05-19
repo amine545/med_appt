@@ -1,99 +1,155 @@
+/* Container holding the profile information (capstone + app tokens) */
 .profile-container {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: clamp(20px, 3vw, 32px);
+  max-width: 400px;
+  margin: 15% auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
   font-family: var(--sans);
   color: var(--text);
+}
+
+.profile-container h1 {
+  margin-top: 0;
+}
+
+.profile-container form {
+  margin-bottom: 20px;
+}
+
+.profile-container label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.profile-container input[type='text'],
+.profile-container input[type='email'] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.profile-container button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: #2190ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.profile-container button:hover {
+  filter: brightness(1.06);
+}
+
+.profile-container button:focus-visible {
+  outline: 2px solid #2190ff;
+  outline-offset: 2px;
 }
 
 .profile-container--centered {
   text-align: center;
 }
 
+/* Form panel (stacked fields) */
 .profile-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--bg);
-  box-shadow: var(--shadow);
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
 }
 
 .profile-form__field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: block;
+  margin-bottom: 0;
   font-weight: 600;
   color: var(--text-h);
   font-size: 0.95rem;
 }
 
 .profile-form__field input {
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font: inherit;
   font-weight: 400;
   color: var(--text-h);
-  background: var(--bg);
+  background: #fff;
+  box-sizing: border-box;
 }
 
 .profile-form__field input:disabled {
-  opacity: 0.75;
-  background: color-mix(in srgb, var(--text) 6%, var(--bg));
+  opacity: 0.8;
+  background: #f0f0f0;
 }
 
 .profile-form__field input:focus-visible {
-  outline: 2px solid var(--accent-border);
-  outline-offset: 2px;
+  outline: 2px solid #2190ff;
+  outline-offset: 1px;
 }
 
 .profile-form__save {
   margin-top: 8px;
-  width: 100%;
-  padding: 14px 16px;
-  border: none;
-  border-radius: 8px;
-  background: var(--accent);
-  color: var(--bg);
-  font: inherit;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
 }
 
-.profile-form__save:hover {
-  filter: brightness(1.05);
+.profile-details {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
 }
 
 .profile-details h1 {
-  margin: 0 0 16px;
+  margin-top: 0;
+  margin-bottom: 16px;
   font-family: var(--heading);
   font-size: 1.5rem;
   color: var(--text-h);
 }
 
+.profile-details h2 {
+  margin-top: 0;
+}
+
 .profile-details p {
-  margin: 0 0 10px;
+  margin-bottom: 10px;
+  margin-top: 0;
   font-size: 1rem;
+}
+
+.profile-details button {
+  display: inline-block;
+  width: auto;
+  min-width: 120px;
+  background-color: #2190ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.profile-details button:hover {
+  filter: brightness(1.06);
 }
 
 .profile-form__edit {
   margin-top: 16px;
-  padding: 10px 22px;
-  border-radius: 8px;
-  border: 2px solid var(--accent);
-  background: transparent;
-  color: var(--text-h);
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.profile-form__edit:hover {
-  background: var(--accent-bg);
 }
 
 .profile-form__error {
@@ -102,6 +158,28 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  .profile-container {
+    background-color: color-mix(in srgb, var(--text) 12%, var(--bg));
+  }
+
+  .profile-form,
+  .profile-details {
+    background: var(--bg);
+    border-color: var(--border);
+  }
+
+  .profile-container input[type='text'],
+  .profile-container input[type='email'],
+  .profile-form__field input {
+    border-color: var(--border);
+    background: var(--bg);
+    color: var(--text-h);
+  }
+
+  .profile-form__field input:disabled {
+    background: color-mix(in srgb, var(--text) 10%, var(--bg));
+  }
+
   .profile-form__error {
     color: #fca5a5;
   }

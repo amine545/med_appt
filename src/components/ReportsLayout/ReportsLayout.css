@@ -1,0 +1,129 @@
+/* ReportsLayout — aligned with global theme (see :root in index.css) */
+.reports-layout {
+  --reports-muted: color-mix(in srgb, var(--text) 88%, transparent);
+  --reports-row-hover: color-mix(in srgb, var(--accent) 8%, var(--bg));
+
+  max-width: min(960px, 100%);
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 36px) clamp(14px, 2.5vw, 22px);
+  font-family: var(--sans);
+  color: var(--text);
+}
+
+.reports-layout__title {
+  margin: 0 0 clamp(14px, 2vw, 22px);
+  font-family: var(--heading);
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-h);
+  line-height: 1.2;
+}
+
+.reports-layout__table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.reports-layout__empty {
+  margin: 0;
+  padding: clamp(28px, 4vw, 40px) clamp(20px, 3vw, 28px);
+  text-align: center;
+  line-height: 1.55;
+  color: var(--text);
+  font-size: 0.98rem;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reports-layout__table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: transparent;
+  font-size: 0.95rem;
+}
+
+.reports-layout__table thead th {
+  text-align: left;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  color: var(--text-h);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.reports-layout__table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.reports-layout__table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--text) 4%, var(--bg));
+}
+
+.reports-layout__table tbody tr:hover {
+  background: var(--reports-row-hover);
+}
+
+.reports-layout__table tbody td {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--text);
+}
+
+.reports-layout__table tbody td:first-child {
+  font-variant-numeric: tabular-nums;
+  color: var(--reports-muted);
+  width: 1%;
+}
+
+.reports-layout__btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--bg);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--text-h) 12%, transparent);
+  transition:
+    filter 0.12s ease,
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.reports-layout__btn:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.reports-layout__btn:active {
+  transform: translateY(1px);
+}
+
+.reports-layout__btn:focus-visible {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reports-layout__table-wrap {
+    border-color: var(--border);
+    background: var(--bg);
+  }
+}

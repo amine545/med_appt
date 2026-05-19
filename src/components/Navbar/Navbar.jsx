@@ -116,6 +116,14 @@ const Navbar = () => {
                       >
                         Your Profile
                       </Link>
+                      <Link
+                        to="/reports"
+                        className="navbar__dropdown-link"
+                        role="menuitem"
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        Your Reports
+                      </Link>
                     </div>
                   ) : null}
                 </div>

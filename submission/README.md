@@ -11,6 +11,13 @@ Your course may require **exact** filenames. Use the list your instructor gave; 
 
 ---
 
+## Patient report PDF (`public/patient_report.pdf`)
+
+- The repo includes a **sample** `patient_report.pdf` (generated via `npm run gen:report-pdf` using `pdf-lib`).
+- For the course: design in **Figma**, export to PDF, replace `public/patient_report.pdf` with your file **using the same filename** so **View Report** / **Download Report** on **`/reports`** keep working.
+
+---
+
 ## Suggested captures (adjust names to match your rubric)
 
 ### 1. `integration.png` — “integration”
@@ -68,3 +75,27 @@ Save as: **`profilecard.png`**
 - [ ] `git add submission/*.png` (or your folder) and commit before submitting.
 
 If your course lists different names (e.g. only `profileform.png`), follow the official list and ignore extras here.
+
+---
+
+## Manual testing checklist (profile, reports, edge cases)
+
+### 1. ProfileForm + ProfileCard
+
+1. Log in → **`/profile`** — confirm **Welcome / Email / Phone** match the API.
+2. Click **Edit**, change **name** (≥ 4 chars) and **phone** (≥ 10 digits), **Save** — success alert, redirect home; open **`/reports`** and confirm **Account summary** / **ProfileCard** shows the new values (or refresh **`/profile`**).
+3. **Validation:** **Edit** → clear name or use short name / short phone → **Save** — browser HTML5 hints and/or server alert should block bad data.
+
+### 2. ReportsLayout (view + download)
+
+1. Open **`/reports`** — table shows sample doctors.
+2. **View Report** — each link should open **`patient_report.pdf`** in a **new tab** (`target="_blank"`).
+3. **Download Report** — should download/save **`patient_report.pdf`** (same-origin `public/` file; behavior can vary slightly by browser).
+
+### 3. Edge cases
+
+1. **No reports:** render with `rows={[]}` (or temporarily pass from parent) — you should see **“No reports are available yet…”** and **no** empty table body.
+2. **Profile errors:** stop the API or clear **`auth-token`** / **`email`** — **`/profile`** should show the error panel and **Go to login**, or redirect to **`/login`**.
+
+Automated checks for reports links and empty state: **`npm run test`** (`ReportsLayout.test.jsx`).
+
