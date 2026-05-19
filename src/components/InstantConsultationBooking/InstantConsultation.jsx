@@ -4,6 +4,29 @@ import { useSearchParams } from 'react-router-dom';
 import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC';
 import DoctorCardIC from './DoctorCardIC/DoctorCardIC';
 
+/** Stable “headshot” per doctor — RandomUser portrait set (realistic photos). */
+const portraitUrlForName = (name) => {
+  let h = 0;
+  for (let i = 0; i < name.length; i += 1) {
+    h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  }
+  const gender = h % 2 === 0 ? 'women' : 'men';
+  const idx = h % 99;
+  return `https://randomuser.me/api/portraits/${gender}/${idx}.jpg`;
+};
+
+const withAvatarFallback = (list) =>
+  list.map((d) => {
+    const p = typeof d.profilePic === 'string' ? d.profilePic.trim() : '';
+    const useExisting =
+      p &&
+      (p.startsWith('http') || p.startsWith('/') || p.startsWith('data:'));
+    return {
+      ...d,
+      profilePic: useExisting ? p : portraitUrlForName(d.name),
+    };
+  });
+
 const InstantConsultation = () => {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
@@ -13,19 +36,21 @@ const InstantConsultation = () => {
     const getDoctorsDetails = () => {
         fetch('https://api.npoint.io/9a5543d36f1460da2f63')
         .then(res => res.json())
-        .then(data => {
+        .then((data) => {
+            const doctorsList = withAvatarFallback(data);
             if (searchParams.get('speciality')) {
-                // window.reload()
-                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
-
+                const filtered = doctorsList.filter(
+                    (doctor) =>
+                        doctor.speciality.toLowerCase() ===
+                        searchParams.get('speciality').toLowerCase()
+                );
                 setFilteredDoctors(filtered);
-
                 setIsSearched(true);
             } else {
                 setFilteredDoctors([]);
                 setIsSearched(false);
             }
-            setDoctors(data);
+            setDoctors(doctorsList);
         })
         .catch(err => console.log(err));
     }
