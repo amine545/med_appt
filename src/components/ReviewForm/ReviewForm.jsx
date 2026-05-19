@@ -67,7 +67,12 @@ const ReviewForm = () => {
 
   return (
     <div className="reviews-page">
-      <h1>Reviews</h1>
+      <header className="reviews-page__header">
+        <h1>Reviews</h1>
+        <p className="reviews-page__lede">
+          Share feedback on your visit—ratings help others find the right care.
+        </p>
+      </header>
       <div className="reviews-table-wrap">
         <table className="reviews-table">
           <thead>
