@@ -79,6 +79,7 @@ const Navbar = () => {
           <Link to="/instant-consultation">Instant consultation</Link>
           <Link to="/booking-consultation">Book consultation</Link>
           <Link to="/reviews">Reviews</Link>
+          <Link to="/reports">Reports</Link>
         </nav>
         <div className="navbar__user">
           {loggedIn ? (
@@ -103,6 +104,7 @@ const Navbar = () => {
                     <div
                       className="navbar__dropdown"
                       id="profile-menu"
+                      data-screenshot="profilecard-dropdown"
                       role="menu"
                       aria-labelledby="profile-menu-button"
                     >

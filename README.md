@@ -87,6 +87,10 @@ grihf-frontend_capstone_starter_code/
    npm run build
    ```
 
+## Submission screenshots
+
+See **[submission/README.md](submission/README.md)** for required PNG filenames (`integration.png`, `profileform.png`, `profilecard.png`, etc.), what each should show, and how to capture them from your running app.
+
 ## Available Scripts
 
 | Command         | Description                      |

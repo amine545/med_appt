@@ -12,6 +12,7 @@ import ReviewFormApp from './components/ReviewForm/ReviewFormApp.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import ProfilePage from './components/ProfileCard/ProfilePage.jsx'
 import Login from './components/Login/Login.jsx'
+import ReportsPage from './components/Reports/ReportsPage.jsx'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -140,6 +141,7 @@ function App() {
             <Route path="/instant-consultation" element={<InstantConsultation />} />
             <Route path="/booking-consultation" element={<BookingConsultation />} />
             <Route path="/reviews" element={<ReviewFormApp />} />
+            <Route path="/reports" element={<ReportsPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Routes>

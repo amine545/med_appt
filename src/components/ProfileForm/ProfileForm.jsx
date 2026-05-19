@@ -161,7 +161,7 @@ const ProfileForm = () => {
   }
 
   return (
-    <div className="profile-container">
+    <div className="profile-container" id="profile-form-root">
       {editMode ? (
         <form className="profile-form" onSubmit={handleSubmit}>
           <label className="profile-form__field">
